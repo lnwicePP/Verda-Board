@@ -266,9 +266,7 @@
 
     if (result.success) {
       btn.innerHTML = '✓ สำเร็จ';
-      setTimeout(() => {
-        window.location.href = 'home.html';
-      }, 1200);
+      window.location.href = 'home.html';
     } else {
       btn.innerHTML = orig;
       btn.disabled = false;
