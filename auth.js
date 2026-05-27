@@ -8,13 +8,19 @@ async function signUp(email, password, displayName, role) {
     console.log('Step 2: Auth user created:', user.email);
 
     console.log('Step 3: Saving to Firestore...');
-    await firebase.firestore().collection("users").doc(user.uid).set({
-      email: email,
-      displayName: displayName,
-      role: role,
-      createdAt: new Date().toISOString()
-    });
-    console.log('Step 4: Firestore saved');
+    console.log('User UID:', user.uid);
+    try {
+      await firebase.firestore().collection("users").doc(user.uid).set({
+        email: email,
+        displayName: displayName,
+        role: role,
+        createdAt: new Date().toISOString()
+      });
+      console.log('Step 4: Firestore saved successfully');
+    } catch (firestoreError) {
+      console.error('Step 4: Firestore save FAILED:', firestoreError.message);
+      throw firestoreError;
+    }
 
     console.log('✓ Signup successful:', user.email);
     return { success: true, user };
@@ -53,16 +59,23 @@ async function googleSignIn() {
 
     console.log('Step 3: Saving to Firestore...');
     console.log('User UID:', user.uid);
+    console.log('Firebase object:', firebase);
+    console.log('Firestore:', firebase.firestore());
+
     try {
-      await firebase.firestore().collection("users").doc(user.uid).set({
+      const userData = {
         email: user.email,
         displayName: user.displayName,
         photoURL: user.photoURL,
         createdAt: new Date().toISOString()
-      });
+      };
+      console.log('Data to save:', userData);
+
+      await firebase.firestore().collection("users").doc(user.uid).set(userData);
       console.log('Step 4: Firestore saved successfully');
     } catch (firestoreError) {
       console.error('Step 4: Firestore save failed:', firestoreError.message);
+      console.error('Full error:', firestoreError);
       throw firestoreError;
     }
 
