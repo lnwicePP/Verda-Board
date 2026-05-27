@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm C:/Users/ACER/Desktop/Verda-Board/dashboard.html)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\ACER\\\\Desktop\\\\Verda-Board\" -Recurse)",
+      "Bash(Select-Object -First 30)"
+    ]
+  }
+}
