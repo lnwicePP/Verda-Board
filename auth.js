@@ -1,6 +1,6 @@
 // Firebase Authentication Functions
 
-async function signUp(email, password, displayName, role) {
+async function signUp(email, password, displayName) {
   try {
     console.log('Step 1: Creating auth user...');
     const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -13,7 +13,8 @@ async function signUp(email, password, displayName, role) {
       await firebase.firestore().collection("users").doc(user.uid).set({
         email: email,
         displayName: displayName,
-        role: role,
+        level: 0,
+        profilePictureURL: null,
         createdAt: new Date().toISOString()
       });
       console.log('Step 4: Firestore saved successfully');
@@ -66,7 +67,8 @@ async function googleSignIn() {
       const userData = {
         email: user.email,
         displayName: user.displayName,
-        photoURL: user.photoURL,
+        profilePictureURL: user.photoURL,
+        level: 0,
         createdAt: new Date().toISOString()
       };
       console.log('Data to save:', userData);

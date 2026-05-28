@@ -390,12 +390,12 @@ label { font-family: "JetBrains Mono"; font-size: 11px; letter-spacing: 0.1em; t
 .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 .divider span { font-family: "JetBrains Mono"; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); }
 
-.sso { display: flex; justify-content: center; gap: 10px; }
+.sso { display: flex; flex-direction: column; gap: 10px; }
 .sso button {
-  height: 44px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  font-family: inherit; font-size: 13.5px; color: var(--ink-2); cursor: pointer;
-  transition: all 0.15s ease;
+  height: 52px; width: 100%; background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  font-family: inherit; font-size: 15px; color: var(--ink-2); cursor: pointer;
+  transition: all 0.15s ease; font-weight: 500;
 }
 .sso button:hover { border-color: #c0b89e; background: var(--bg); transform: translateY(-1px); }
 .sso button svg { width: 18px; height: 18px; }
@@ -451,8 +451,7 @@ footer a:hover { color: var(--ink); }
   .role .card-r svg { width: 18px; height: 18px; }
   .role .card-r b { font-size: 12px; }
   .role .card-r small { font-size: 9px; }
-  .sso { grid-template-columns: 1fr; }
-  .sso button { height: 40px; font-size: 12px; }
+  .sso button { height: 48px; font-size: 14px; }
   .sso button svg { width: 16px; height: 16px; }
   .signup { font-size: 12px; margin-top: 16px; }
   .divider { margin: 16px 0 10px; }

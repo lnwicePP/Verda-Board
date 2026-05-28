@@ -179,35 +179,6 @@
         <div class="strength-label" id="strengthLabel">ความปลอดภัยของรหัส</div>
       </div>
 
-      <div class="field">
-        <label>ฉันเป็น</label>
-        <div class="roles">
-          <label class="role">
-            <input type="radio" name="role" value="student" checked />
-            <span class="card-r">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-              <b>นักเรียน</b>
-              <small>STUDENT</small>
-            </span>
-          </label>
-          <label class="role">
-            <input type="radio" name="role" value="teacher" />
-            <span class="card-r">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h7a3 3 0 0 1 3 3v15a2 2 0 0 0-2-2H2zM22 3h-7a3 3 0 0 0-3 3v15a2 2 0 0 1 2-2h8z"/></svg>
-              <b>คุณครู</b>
-              <small>TEACHER</small>
-            </span>
-          </label>
-          <label class="role">
-            <input type="radio" name="role" value="hobbyist" />
-            <span class="card-r">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-              <b>ผู้สนใจ</b>
-              <small>MAKER</small>
-            </span>
-          </label>
-        </div>
-      </div>
 
       <div class="row-options">
         <label class="check terms">
@@ -281,12 +252,6 @@
 <script src="auth.js"></script>
 
 <script>
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      console.log('✓ User already logged in, redirecting to home...');
-      window.location.href = 'home.html';
-    }
-  });
 
   function togglePw() {
     const pw = document.getElementById('pw');
@@ -316,7 +281,6 @@
     const displayName = form.querySelector('input[type="text"]').value;
     const email = form.querySelector('input[type="email"]').value;
     const password = form.querySelector('input[type="password"]').value;
-    const role = form.querySelector('input[name="role"]:checked').value;
     const termsCheckbox = form.querySelector('input[type="checkbox"]');
     const btn = form.querySelector('.submit');
     const orig = btn.innerHTML;
@@ -338,7 +302,7 @@
 
     try {
       console.log('Starting signup...');
-      const result = await signUp(email, password, displayName, role);
+      const result = await signUp(email, password, displayName);
       console.log('Signup result:', result);
 
       if (result.success) {
