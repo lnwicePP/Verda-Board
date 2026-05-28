@@ -171,10 +171,10 @@ body::after {
 .brand-name em { font-style: normal; color: var(--green); }
 
 /* ----- Main login card ----- */
-main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; position: relative; z-index: 1; padding-top: 30px; padding-bottom: 30px; overflow-y: auto; }
+main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; position: relative; z-index: 1; padding-top: 30px; padding-bottom: 30px; overflow-y: auto; min-height: 0; }
 
 /* card wrap holds the card + floating decorations */
-.card-wrap { position: relative; width: 100%; max-width: 420px; }
+.card-wrap { position: relative; width: 100%; max-width: 420px; min-width: 0; }
 
 /* ---- Floating component decorations ---- */
 .deco { position: absolute; pointer-events: none; user-select: none; z-index: 0; }
@@ -268,6 +268,8 @@ main { flex: 1; display: flex; align-items: center; justify-content: center; pad
   box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset, 0 24px 48px -32px rgba(14,26,20,0.18);
   position: relative; z-index: 1;
   animation: cardEnter 0.7s cubic-bezier(0.2, 0.9, 0.3, 1) both;
+  min-width: 0;
+  box-sizing: border-box;
 }
 @keyframes cardEnter {
   from { opacity: 0; transform: translateY(16px) scale(0.98); }
@@ -415,8 +417,9 @@ footer a { color: var(--ink-3); text-decoration: none; margin-left: 18px; }
 footer a:hover { color: var(--ink); }
 
 @media (max-width: 768px) {
-  main { padding: 20px 16px; }
-  .card { padding: 28px 20px; max-width: 100%; }
+  main { padding: 20px 16px; min-height: auto; }
+  .card { padding: 28px 20px; max-width: 100%; width: 100%; }
+  .card-wrap { max-width: 100%; }
   .card h1 { font-size: 20px; }
   .card .sub { font-size: 13px; }
   .roles { grid-template-columns: 1fr; }
@@ -432,8 +435,9 @@ footer a:hover { color: var(--ink); }
 }
 
 @media (max-width: 480px) {
-  main { padding: 16px 12px; }
-  .card { padding: 24px 16px; max-width: 100%; }
+  main { padding: 16px 12px; min-height: auto; }
+  .card { padding: 24px 16px; max-width: 100%; width: 100%; }
+  .card-wrap { max-width: 100%; }
   .card h1 { font-size: 18px; }
   .card .sub { font-size: 12px; }
   h1 { font-size: 20px; }
@@ -519,7 +523,17 @@ footer a:hover { color: var(--ink); }
 .strength-label.s3 { color: #8a7a14; }
 .strength-label.s4 { color: var(--green); }
 
-.error-msg { color: var(--red); font-size: 12px; margin-top: 4px; font-family: "JetBrains Mono"; }
+.error-msg {
+  color: #fff;
+  background: var(--red);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: "IBM Plex Sans Thai", system-ui, sans-serif;
+  line-height: 1.4;
+  border-left: 4px solid #a83428;
+}
 
 /* ===== Home Page Styles ===== */
 :root {

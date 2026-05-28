@@ -162,7 +162,7 @@
         <div class="input-wrap">
           <input class="input" id="pw" type="password" placeholder="••••••••••••" autocomplete="current-password" required />
           <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-          <button type="button" class="toggle-eye" onclick="togglePw()" aria-label="แสดงรหัสผ่าน">
+          <button type="button" class="toggle-eye" onclick="togglePw(event)" aria-label="แสดงรหัสผ่าน">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
           </button>
         </div>
@@ -247,7 +247,8 @@
     }
   });
 
-  function togglePw() {
+  function togglePw(event) {
+    event.preventDefault();
     const pw = document.getElementById('pw');
     pw.type = pw.type === 'password' ? 'text' : 'password';
   }
@@ -256,7 +257,7 @@
     e.preventDefault();
     const form = e.target;
     const email = form.querySelector('input[type="email"]').value;
-    const password = form.querySelector('input[type="password"]').value;
+    const password = document.getElementById('pw').value;
     const btn = form.querySelector('.submit');
     const orig = btn.innerHTML;
 

@@ -1,5 +1,21 @@
 // Firebase Authentication Functions
 
+function translateError(errorCode) {
+  const errors = {
+    'auth/email-already-in-use': 'อีเมลนี้ถูกใช้งานแล้ว กรุณาใช้อีเมลอื่น',
+    'auth/weak-password': 'รหัสผ่านอ่อนแอเกินไป ต้องมีอย่างน้อย 8 ตัวอักษร',
+    'auth/invalid-email': 'รูปแบบอีเมลไม่ถูกต้อง',
+    'auth/user-not-found': 'ไม่พบบัญชีผู้ใช้ สมัครสมาชิกใหม่ได้ที่หน้า สมัครสมาชิก',
+    'auth/wrong-password': 'รหัสผ่านไม่ถูกต้อง',
+    'auth/invalid-credential': 'อีเมลหรือรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่',
+    'auth/invalid-login-credentials': 'อีเมลหรือรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่',
+    'auth/too-many-requests': 'ลองใหม่มากเกินไป กรุณารอสักครู่แล้วลองอีกครั้ง',
+    'auth/operation-not-allowed': 'การลงชื่อเข้าระบบประเภทนี้ถูกปิดใช้งาน'
+  };
+
+  return errors[errorCode] || 'เกิดข้อผิดพลาด: ' + errorCode;
+}
+
 async function signUp(email, password, displayName) {
   try {
     console.log('Step 1: Creating auth user...');
@@ -26,8 +42,9 @@ async function signUp(email, password, displayName) {
     console.log('✓ Signup successful:', user.email);
     return { success: true, user };
   } catch (error) {
-    console.error('✗ Signup error:', error.message);
-    return { success: false, error: error.message };
+    console.error('✗ Signup error:', error.code, error.message);
+    const friendlyError = translateError(error.code);
+    return { success: false, error: friendlyError };
   }
 }
 
@@ -37,8 +54,9 @@ async function login(email, password) {
     console.log('✓ Login successful:', userCredential.user.email);
     return { success: true, user: userCredential.user };
   } catch (error) {
-    console.error('✗ Login error:', error.message);
-    return { success: false, error: error.message };
+    console.error('✗ Login error:', error.code, error.message);
+    const friendlyError = translateError(error.code);
+    return { success: false, error: friendlyError };
   }
 }
 
@@ -84,9 +102,10 @@ async function googleSignIn() {
     console.log('✓ Google sign-in successful:', user.email);
     return { success: true, user };
   } catch (error) {
-    console.error('✗ Google sign-in error:', error.message);
+    console.error('✗ Google sign-in error:', error.code, error.message);
     console.error('Full error:', error);
-    return { success: false, error: error.message };
+    const friendlyError = translateError(error.code);
+    return { success: false, error: friendlyError };
   }
 }
 

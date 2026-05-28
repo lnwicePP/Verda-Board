@@ -1,0 +1,7 @@
+::1 - - [28/May/2026 10:02:09] "GET /index.html HTTP/1.1" 200 -
+::1 - - [28/May/2026 10:02:09] "GET /style.css HTTP/1.1" 200 -
+::1 - - [28/May/2026 10:02:09] "GET /auth.js HTTP/1.1" 200 -
+::1 - - [28/May/2026 10:03:29] "GET /index.html HTTP/1.1" 200 -
+::1 - - [28/May/2026 10:03:29] "GET /style.css HTTP/1.1" 200 -
+::1 - - [28/May/2026 10:03:29] "GET /auth.js HTTP/1.1" 200 -
+::1 - - [28/May/2026 10:03:32] "GET /signup.html HTTP/1.1" 200 -
