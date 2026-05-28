@@ -910,7 +910,7 @@ main {
   text-transform: uppercase; color: var(--green);
   display: inline-flex; align-items: center; gap: 12px;
   margin-bottom: 24px;
-  animation: fadeUp 0.6s 0.1s ease-out both;
+  animation: fadeUpHome 0.6s 0.1s ease-out both;
 }
 .eyebrow::before, .eyebrow::after {
   content: ""; width: 32px; height: 1px; background: var(--green);
@@ -932,7 +932,7 @@ main {
   0%, 90%, 100% { transform: translateY(0); color: var(--green); }
   45% { transform: translateY(-3px); color: var(--ink); }
 }
-@keyframes fadeUp {
+@keyframes fadeUpHome {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
@@ -997,14 +997,14 @@ main {
   color: var(--ink-3);
   max-width: 560px;
   line-height: 1.5;
-  animation: fadeUp 0.6s 0.9s ease-out both;
+  animation: fadeUpHome 0.6s 0.9s ease-out both;
 }
 .tagline b { color: var(--ink); font-weight: 600; }
 
 .cta-row {
   margin-top: 36px;
   display: inline-flex; gap: 12px;
-  animation: fadeUp 0.6s 1.05s ease-out both;
+  animation: fadeUpHome 0.6s 1.05s ease-out both;
 }
 .btn {
   display: inline-flex; align-items: center; gap: 10px;
@@ -1045,7 +1045,7 @@ main {
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--line);
   border-radius: 14px;
-  animation: fadeUp 0.6s 1.2s ease-out both, stripFloat 8s ease-in-out infinite 2s;
+  animation: fadeUpHome 0.6s 1.2s ease-out both, stripFloat 8s ease-in-out infinite 2s;
 }
 @keyframes stripFloat {
   0%, 100% { transform: translateY(0); }
