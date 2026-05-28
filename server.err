@@ -20,3 +20,9 @@
 ::1 - - [28/May/2026 10:19:19] "GET /index.html HTTP/1.1" 200 -
 ::1 - - [28/May/2026 10:19:19] "GET /auth.js HTTP/1.1" 200 -
 ::1 - - [28/May/2026 10:19:19] "GET /style.css HTTP/1.1" 200 -
+::1 - - [28/May/2026 10:24:30] "GET /signup.html HTTP/1.1" 200 -
+::1 - - [28/May/2026 10:24:30] "GET /style.css HTTP/1.1" 200 -
+::1 - - [28/May/2026 10:24:30] "GET /auth.js HTTP/1.1" 200 -
+::1 - - [28/May/2026 10:26:45] "GET /signup.html HTTP/1.1" 200 -
+::1 - - [28/May/2026 10:26:45] "GET /style.css HTTP/1.1" 200 -
+::1 - - [28/May/2026 10:26:45] "GET /auth.js HTTP/1.1" 200 -
